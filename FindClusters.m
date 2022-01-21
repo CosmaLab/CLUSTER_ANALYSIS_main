@@ -188,7 +188,7 @@ Xn = Xn(Xn(:,2) > 0 & Xn(:,2) < height*zoom_factor, :);
 M=sparse(round(Xn(:,1)+1),round(Xn(:,2)+1),1);
 
 %h=fspecial('average',roi);
-%%h(find(h))=1; %comment this line in order to average the number of localizations in a 'roi' x 'roi' ROI instead of just summing the number of localizations in the ROI
+%%h(find(h))=1; %uncomment this line in order to average the number of localizations in a 'roi' x 'roi' ROI instead of just summing the number of localizations in the ROI
 %Mf=imfilter(full(M),h);
 
 % apply the summing filter
