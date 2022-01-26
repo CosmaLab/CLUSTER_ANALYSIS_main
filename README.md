@@ -62,7 +62,7 @@ This code is used to identify clusters from localizations list files. It will gi
 - Pixel size used for the first density image generated. A 2D histogram of the number of localizations per pixel is created.
 
 ##### 	sum_roi_size: 
-- Dimension of the square kernel in pixels to generate binary image based on the threshold (should be an odd-valued integer -but it doesn't have to be-). E.g., sum_roi_size= 5, kernel dimension 5 x 5 pixels^2.
+- Dimension of the square kernel in pixels to generate binary image based on the threshold. The value should be an odd integer. E.g., sum_roi_size= 5, kernel dimension 5 x 5 pixels^2.
         Each pixel contains a certain number of molecules (a 2D histogram with each pixel size equal to analysis_pixel_size in nm). The script will sum the number of molecules in a 'roi' x 'roi' area surrounding each pixel and put the sum in the pixel under consideration.
 
 ##### sum_threshold: 
@@ -73,7 +73,11 @@ This code is used to identify clusters from localizations list files. It will gi
 - Factor by which the size of the analysis_pixel_size will be decreased, once you have a region to start finding clusters in . E.g., If analysis_pixel_size is 10, and factor is 5, the new analysis pixel size will be 2.
 
 ##### localization_precision: 
-- Measure of localization precision of the molecules (in nm), used to calculate the centroid of the clusters. This value is used as the sigma value in a 2D Gaussian point-spread function.
+- Measure of localization precision of the molecules (in nm), used to calculate the centroid of the clusters. This value is used as the sigma (σ) in a 2D Gaussian point-spread function associated to each localization. Only the values of the Gaussian lying within 3σ are considered. The script will sum the values of the Gaussians of all localizations belonging to the same Island to generate a density map, from which clusters are identified.
+
+  ** The interval of Gaussian values associated to each localization is defined as numSigma x sigma. 
+     We set this interval at 3σ, but it can be adjusted by changing the variable numSigma (see FindClusters.m ln358). 
+     E.g. if numSigma=5, the interval will be 5σ. The bigger the numSigma  value, the bigger the area associated to each localization.
 
 ##### minimum_molecules_per_cluster: 
 - The mimimum number of localization found inside a "cluster" to consider it as such. After the program finds a cluster a final check is performed to ensure that there must be >= 'minCluster' molecules within the cluster. If there are < 'minCluster' molecules within the cluster then this will not be considered a cluster.
