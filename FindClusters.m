@@ -353,6 +353,7 @@ for j=1:length(m)
     %end
     
     % JSB 2015.08.03 added as a alternative way to sum gaussians
+    % LM & CS 2022.01.25 substituted value '5' with 'numSigma' in minx and miny formulas (as it was already for maxx and maxy).
     sigma = precision/(analysis_pixel_size/factor);
     numSigma = 3;
     if updateStatus
@@ -364,9 +365,9 @@ for j=1:length(m)
         end
         x0 = factor*(xi_c(i,2))+1.0+1.5;
         y0 = factor*(xi_c(i,1))+1.0+1.5;        
-        minx = max(1, floor(x0-5*sigma));
+        minx = max(1, floor(x0-numSigma*sigma));
         maxx = min(size(Mi_c,2), ceil(x0+numSigma*sigma));
-        miny = max(1, floor(y0-5*sigma));
+        miny = max(1, floor(y0-numSigma*sigma));
         maxy = min(size(Mi_c,1), ceil(y0+numSigma*sigma));
         for xval=minx:maxx
             for yval=miny:maxy
