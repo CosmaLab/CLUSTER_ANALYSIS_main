@@ -12,7 +12,20 @@ pix2nm = 160; % NSTORM
 % Define the parameters to use. For a description of each parameter see the
 % type: 'help FindClustersStruct' in the command window
 params = defineFindClustersStruct(pix2nm);
+
+% %% 2022.01.25 Added by Laura-Alavaro-Chiara to constrain the analysis only
+% to odd roi sizes. (Otherwise, with even numbers, the squared kernel would
+% not be centered in the pixel X under analysis.)
+% e.g. roi=3   1 1 1      roi=4   1 1 1 1
+%              1 X 1              1 X 1 1
+%              1 1 1              1 1 1 1
+%                                 1 1 1 1
+if mod(params.sum_roi_size,2) == 0;
+disp('sum_roi_size should be a positive odd integer. Value automatically reduced to the nearest odd integer.');
+params.sum_roi_size = params.sum_roi_size - 1;
+end
 % %%
+
 files = Select1DataGroup('LocLists','*.bin',rootdir);
 % give the computer a moment to close the GUI
 pause(0.5)
