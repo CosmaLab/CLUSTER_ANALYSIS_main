@@ -83,7 +83,7 @@ This code is used to identify clusters from localizations list files. It will gi
 - The mimimum number of localization found inside a "cluster" to consider it as such. After the program finds a cluster a final check is performed to ensure that there must be >= 'minCluster' molecules within the cluster. If there are < 'minCluster' molecules within the cluster then this will not be considered a cluster.
 
 ##### ignoreNumPeakThreshold: 
-- Ignore islands that have > ignoreNumPeakThreshold of pixels. When doing the peak finding (finding localizations on an island) if the number of pixels to scan gets too large then the program will take a long time to finsih. If any island has more peaks than the treshold, it will get discarded from the analysis. If you consider these discarded island should be analized, increas the ignoreNumPeakThreshold.
+- Ignore islands that have > ignoreNumPeakThreshold of pixels. When doing the peak finding (finding localizations on an island) if the number of pixels to scan gets too large then the program will take a long time to finish. If any island has more peaks than the threshold, it will get discarded from the analysis. If you consider that this discarded island should be analyzed, increase the ignoreNumPeakThreshold.
 
 ##### ignoreNumIslandThreshold: 
 - Ignore this island and continue to analyse the next island if the number of localizations > ignoreNumIslandThreshold. A possible outcome is for the iterative cluster identification to discard very dense regions, as they would be too computationally intense. This is a measurement of the number of loops that the script will try to calculate the centroid before "giving up" and discarding the cluster. Under normal circumstances there is no need to change the default value.
