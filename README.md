@@ -53,7 +53,7 @@ This code is used to identify clusters from localizations list files. It will gi
 - In all general cases, this should be left in 1 （True). It is always better to use the drift corrected file.
 
 ##### use_channels: 
-- Selection of the channel that is going to be analized. In case you are doing multicolor imaging, you can manually select an individual channel. The default, -1, pulls together and analyzes all the localizations from the .bin file, regardless of the channel of origin. When using -1, there will be clusters with localizations belonging to different channels.
+- Selection of the channel that is going to be analyzed. In case you are doing multicolor imaging, you can manually select an individual channel. The default, -1, pulls together and analyzes all the localizations from the .bin file, regardless of the channel of origin. When using -1, there will be clusters with localizations belonging to different channels.
 
 ##### original_pixel_size: 
 - The pixel size, in nm, of the original image. To how many nm a pixel is equivalent.
